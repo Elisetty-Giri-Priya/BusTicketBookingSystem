@@ -1,7 +1,10 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class BusBooking {
-    ArrayList<Bus> buses = new ArrayList<Bus>();
+    // ArrayList<Bus> buses = new ArrayList<Bus>();
+    HashMap<Integer, Bus> buses = new HashMap<Integer, Bus>();
 
     ArrayList<BookingDetails> bookings = new ArrayList<BookingDetails>();
 
@@ -13,7 +16,7 @@ public class BusBooking {
         b1.Destination = "Bengalore";
         b1.seats = new int[Bus.EXPRESS_SEATS];
         b1.TotalSeats = b1.AvailableSeats = Bus.EXPRESS_SEATS;
-        buses.add(b1);
+        buses.put(b1.BusNo, b1);
 
         // BookingDetails d7 = new BookingDetails();
         // d7.user_Name = "naveen";
@@ -40,7 +43,7 @@ public class BusBooking {
         b2.Destination = "Madanapalli";
         b2.seats = new int[Bus.TRAVEL_SEATS];
         b2.TotalSeats = b2.AvailableSeats = Bus.TRAVEL_SEATS;
-        buses.add(b2);
+        buses.put(b2.BusNo, b2);
 
         // BookingDetails d5 = new BookingDetails();
         // d5.user_Name = "naveen";
@@ -67,7 +70,7 @@ public class BusBooking {
         b3.Destination = "Bengalore";
         b3.seats = new int[Bus.TRAVEL_SEATS];
         b3.TotalSeats = b3.AvailableSeats = Bus.TRAVEL_SEATS;
-        buses.add(b3);
+        buses.put(b3.BusNo, b3);
 
         // BookingDetails d1 = new BookingDetails();
         // d1.user_Name = "naveen";
@@ -94,7 +97,7 @@ public class BusBooking {
         b4.Destination = "Madanapalli";
         b4.seats = new int[Bus.EXPRESS_SEATS];
         b4.TotalSeats = b4.AvailableSeats = Bus.EXPRESS_SEATS;
-        buses.add(b4);
+        buses.put(b4.BusNo, b4);
 
         // BookingDetails d3 = new BookingDetails();
         // d3.user_Name = "naveen";
@@ -117,11 +120,14 @@ public class BusBooking {
 
     public void searchBuses(String from, String to) {
         System.out.printf("%10s %10s %15s %30s\n", "Bus_No", "Type", "Source", "Destination");
-        for (int i = 0; i < buses.size(); i++) {
-            Bus currentBus = buses.get(i);
+        List<Bus> list = List.copyOf(buses.values());
+
+        for (int i = 0; i < list.size(); i++) {
+            Bus currentBus = list.get(i);
             if (currentBus.Source.equals(from) && currentBus.Destination.equals(to)) {
-                Bus b1 = currentBus;
-                System.out.printf("%10d %10s %15s %30s\n", b1.BusNo, b1.BusType, b1.Source, b1.Destination);
+
+                System.out.printf("%10d %10s %15s %30s\n", currentBus.BusNo, currentBus.BusType, currentBus.Source,
+                        currentBus.Destination);
             }
         }
 
@@ -129,124 +135,90 @@ public class BusBooking {
 
     public void listBuses() {
         System.out.printf("%10s %10s %15s %30s\n", "Bus_No", "Type", "Source", "Destination");
-        for (int i = 0; i < buses.size(); i++) {
-            Bus b = buses.get(i);
-            System.out.printf("%10d %10s %15s %30s\n", b.BusNo, b.BusType, b.Source, b.Destination);
+        List<Bus> list = List.copyOf(buses.values());
+        for (int i = 0; i < list.size(); i++) {
+            Bus bus = list.get(i);
+            System.out.printf("%10d %10s %15s %30s\n", bus.BusNo, bus.BusType, bus.Source, bus.Destination);
 
         }
     }
 
-    public void searchSeats(String Destination, int Bus_No) {
-        for (int i = 0; i < buses.size(); i++) {
-            Bus currentBus = buses.get(i);
-            if (currentBus.BusNo == Bus_No && currentBus.Destination.equals(Destination)) {
-                Bus b = currentBus;
-                System.out.printf("%10d %10s %15s %30s %5d %5d\n", b.BusNo, b.BusType, b.Source, b.Destination,
-                        b.TotalSeats, b.AvailableSeats);
-            }
-        }
+    public void searchSeats(int Bus_No) {
+
+        Bus bookSeat = buses.get(Bus_No);
+
+        System.out.printf("%10d %10s %15s %30s %5d %5d\n", bookSeat.BusNo, bookSeat.BusType, bookSeat.Source,
+                bookSeat.Destination,
+                bookSeat.TotalSeats, bookSeat.AvailableSeats);
     }
 
     public void bookingSeats(String name, String phone, int age, int Bus_no, int seatNo) {
+        Bus curr_bus = buses.get(Bus_no);
 
-        for (int i = 0; i < buses.size(); i++) {
-            Bus curr_bus = buses.get(i);
-            if (curr_bus.BusNo == Bus_no) {
-                BookingDetails b1 = new BookingDetails();
-                b1.user_Name = name;
-                b1.user_Phone = phone;
-                b1.user_Age = age;
-                b1.bus_no = Bus_no;
-                b1.user_Destination = curr_bus.Destination;
-                b1.bus_Type = curr_bus.BusType;
-                b1.seat_No = seatNo;
-                bookings.add(b1);
-                if (curr_bus.BusType.equals("Travels")) {
-                    int[] s = curr_bus.seats;
+        BookingDetails bookingDetails = new BookingDetails();
+        bookingDetails.user_Name = name;
+        bookingDetails.user_Phone = phone;
+        bookingDetails.user_Age = age;
+        bookingDetails.bus_no = Bus_no;
+        bookingDetails.user_Destination = curr_bus.Destination;
+        bookingDetails.bus_Type = curr_bus.BusType;
+        bookingDetails.seat_No = seatNo;
+        bookings.add(bookingDetails);
 
-                    s[seatNo] = 1;
-                    curr_bus.AvailableSeats--;
-
-                } else if (curr_bus.BusType.equals("Express")) {
-                    int[] s = curr_bus.seats;
-
-                    s[seatNo] = 1;
-                    curr_bus.AvailableSeats--;
-
-                }
-            }
-
+        int[] s = curr_bus.seats;
+        if (s[seatNo]==0) {
+            s[seatNo] = 1;
+            curr_bus.AvailableSeats--;
+        } else {
+            System.out.println("This seat is already booked");
         }
 
     }
 
     public void displaySeats(int Bus_no) {
 
-        for (int i = 0; i < buses.size(); i++) {
-            Bus curr_bus = buses.get(i);
-            if (curr_bus.BusNo == Bus_no) {
-                if (curr_bus.BusType.equals("Travels")) {
-                    int[] s = curr_bus.seats;
-                    int count = 0;
-                    for (int k = 1; k < s.length; k++) {
-                        count = 0;
-                        int l = 0;
-                        for (l = k; count < 5; l++) {
+        Bus curr_bus = buses.get(Bus_no);
 
-                            System.out.printf("%2d ", s[l], " ");
-                            if (count == 1) {
-                                System.out.print("  ");
-                            }
-                            count++;
-                        }
-                        k = l--;
-                        System.out.println();
-                    }
-                } else if (curr_bus.BusType.equals("Express")) {
-                    int[] s = curr_bus.seats;
-                    int count = 0;
-                    for (int k = 1; k < s.length; k++) {
-                        count = 0;
-                        int l = 0;
-                        for (l = k; count < 5; l++) {
-                            System.out.printf("%2d ", s[l], " ");
-                            if (count == 1) {
-                                System.out.print("  ");
-                            }
-                            count++;
-                        }
-                        l = l - 1;
-                        k = l;
-                        System.out.println();
-                    }
+        int[] s = curr_bus.seats;
+        int count = 0;
+        for (int k = 1; k < s.length; k++) {
+            count = 0;
+            int l = 0;
+            for (l = k; count < 5; l++) {
+
+                System.out.printf("%2d ", s[l], " ");
+                if (count == 1) {
+                    System.out.print("  ");
                 }
-                break;
+                count++;
             }
+            l--;
+            k = l;
+            System.out.println();
         }
 
     }
 
     public void seatCancellation(String name, String phone, int age, int Bus_no, int seatNo) {
-        for (int i = 0; i < buses.size(); i++) {
-            Bus curr_bus = buses.get(i);
-            if (curr_bus.BusNo == Bus_no) {
-                BookingDetails b1 = new BookingDetails();
-                b1.user_Name = name;
-                b1.user_Phone = phone;
-                b1.user_Age = age;
-                b1.bus_no = Bus_no;
-                b1.user_Destination = curr_bus.Destination;
-                b1.bus_Type = curr_bus.BusType;
-                b1.seat_No = seatNo;
-                bookings.remove(b1);
 
-                int[] s = curr_bus.seats;
+        Bus curr_bus = buses.get(Bus_no);
+        if (curr_bus.BusNo == Bus_no) {
+            BookingDetails bookingDetails = new BookingDetails();
+            bookingDetails.user_Name = name;
+            bookingDetails.user_Phone = phone;
+            bookingDetails.user_Age = age;
+            bookingDetails.bus_no = Bus_no;
+            bookingDetails.user_Destination = curr_bus.Destination;
+            bookingDetails.bus_Type = curr_bus.BusType;
+            bookingDetails.seat_No = seatNo;
+            bookings.remove(bookingDetails);
 
-                s[seatNo] = 0;
-                curr_bus.AvailableSeats++;
+            int[] s = curr_bus.seats;
 
-            }
+            s[seatNo] = 0;
+            curr_bus.AvailableSeats++;
+
         }
-
     }
+
 }
