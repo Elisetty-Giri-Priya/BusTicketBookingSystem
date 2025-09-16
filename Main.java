@@ -29,12 +29,10 @@ public class Main {
                     b1.listBuses();
                     break;
                 case 3:
-                    System.out.println("Destination:");
-                    sc.nextLine();
-                    String destination = sc.nextLine();
+
                     System.out.println("Bus N0:");
                     int busNo = sc.nextInt();
-                    b1.searchSeats(destination, busNo);
+                    b1.searchSeats(busNo);
                     break;
                 case 4:
                     System.out.println("Bus No:");
@@ -57,7 +55,7 @@ public class Main {
                     int sno = sc.nextInt();
                     b1.bookingSeats(name, phone, age, bno, sno);
                     break;
-                    case 6:
+                case 6:
                     System.out.println("Enter your Name:");
                     String Cname = sc.nextLine();
                     sc.nextLine();
@@ -70,6 +68,7 @@ public class Main {
                     b1.displaySeats(Cbno);
                     System.out.println("Enter your seat number:");
                     int Csno = sc.nextInt();
+                    b1.seatCancellation(Cname, Cphone, Cage, Cbno, Csno);
             }
         }
     }
