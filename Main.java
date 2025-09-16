@@ -42,8 +42,9 @@ public class Main {
                     break;
                 case 5:
                     System.out.println("Enter your Name:");
+                     sc.nextLine();
                     String name = sc.nextLine();
-                    sc.nextLine();
+                   
                     System.out.println("Enter your Phone Number:");
                     String phone = sc.nextLine();
                     System.out.println("Enter your Age:");

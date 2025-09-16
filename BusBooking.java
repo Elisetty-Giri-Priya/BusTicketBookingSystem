@@ -166,7 +166,7 @@ public class BusBooking {
         bookings.add(bookingDetails);
 
         int[] s = curr_bus.seats;
-        if (s[seatNo] == 0) {
+        if (s[seatNo]==0) {
             s[seatNo] = 1;
             curr_bus.AvailableSeats--;
         } else {
@@ -192,7 +192,8 @@ public class BusBooking {
                 }
                 count++;
             }
-            k = l--;
+            l--;
+            k = l;
             System.out.println();
         }
 
@@ -202,15 +203,15 @@ public class BusBooking {
 
         Bus curr_bus = buses.get(Bus_no);
         if (curr_bus.BusNo == Bus_no) {
-            BookingDetails b1 = new BookingDetails();
-            b1.user_Name = name;
-            b1.user_Phone = phone;
-            b1.user_Age = age;
-            b1.bus_no = Bus_no;
-            b1.user_Destination = curr_bus.Destination;
-            b1.bus_Type = curr_bus.BusType;
-            b1.seat_No = seatNo;
-            bookings.remove(b1);
+            BookingDetails bookingDetails = new BookingDetails();
+            bookingDetails.user_Name = name;
+            bookingDetails.user_Phone = phone;
+            bookingDetails.user_Age = age;
+            bookingDetails.bus_no = Bus_no;
+            bookingDetails.user_Destination = curr_bus.Destination;
+            bookingDetails.bus_Type = curr_bus.BusType;
+            bookingDetails.seat_No = seatNo;
+            bookings.remove(bookingDetails);
 
             int[] s = curr_bus.seats;
 
