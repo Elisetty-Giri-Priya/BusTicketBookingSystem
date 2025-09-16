@@ -125,8 +125,9 @@ public class BusBooking {
         for (int i = 0; i < list.size(); i++) {
             Bus currentBus = list.get(i);
             if (currentBus.Source.equals(from) && currentBus.Destination.equals(to)) {
-                Bus b1 = list.get(i);
-                System.out.printf("%10d %10s %15s %30s\n", b1.BusNo, b1.BusType, b1.Source, b1.Destination);
+
+                System.out.printf("%10d %10s %15s %30s\n", currentBus.BusNo, currentBus.BusType, currentBus.Source,
+                        currentBus.Destination);
             }
         }
 
@@ -136,47 +137,40 @@ public class BusBooking {
         System.out.printf("%10s %10s %15s %30s\n", "Bus_No", "Type", "Source", "Destination");
         List<Bus> list = List.copyOf(buses.values());
         for (int i = 0; i < list.size(); i++) {
-            Bus b = list.get(i);
-            System.out.printf("%10d %10s %15s %30s\n", b.BusNo, b.BusType, b.Source, b.Destination);
+            Bus bus = list.get(i);
+            System.out.printf("%10d %10s %15s %30s\n", bus.BusNo, bus.BusType, bus.Source, bus.Destination);
 
         }
     }
 
     public void searchSeats(int Bus_No) {
 
-        Bus currentBus = buses.get(Bus_No);
+        Bus bookSeat = buses.get(Bus_No);
 
-        Bus b = currentBus;
-        System.out.printf("%10d %10s %15s %30s %5d %5d\n", b.BusNo, b.BusType, b.Source, b.Destination,
-                b.TotalSeats, b.AvailableSeats);
+        System.out.printf("%10d %10s %15s %30s %5d %5d\n", bookSeat.BusNo, bookSeat.BusType, bookSeat.Source,
+                bookSeat.Destination,
+                bookSeat.TotalSeats, bookSeat.AvailableSeats);
     }
 
     public void bookingSeats(String name, String phone, int age, int Bus_no, int seatNo) {
-
         Bus curr_bus = buses.get(Bus_no);
-        if (curr_bus.BusNo == Bus_no) {
-            BookingDetails b1 = new BookingDetails();
-            b1.user_Name = name;
-            b1.user_Phone = phone;
-            b1.user_Age = age;
-            b1.bus_no = Bus_no;
-            b1.user_Destination = curr_bus.Destination;
-            b1.bus_Type = curr_bus.BusType;
-            b1.seat_No = seatNo;
-            bookings.add(b1);
-            if (curr_bus.BusType.equals("Travels")) {
-                int[] s = curr_bus.seats;
 
-                s[seatNo] = 1;
-                curr_bus.AvailableSeats--;
+        BookingDetails bookingDetails = new BookingDetails();
+        bookingDetails.user_Name = name;
+        bookingDetails.user_Phone = phone;
+        bookingDetails.user_Age = age;
+        bookingDetails.bus_no = Bus_no;
+        bookingDetails.user_Destination = curr_bus.Destination;
+        bookingDetails.bus_Type = curr_bus.BusType;
+        bookingDetails.seat_No = seatNo;
+        bookings.add(bookingDetails);
 
-            } else if (curr_bus.BusType.equals("Express")) {
-                int[] s = curr_bus.seats;
-
-                s[seatNo] = 1;
-                curr_bus.AvailableSeats--;
-
-            }
+        int[] s = curr_bus.seats;
+        if (s[seatNo] == 0) {
+            s[seatNo] = 1;
+            curr_bus.AvailableSeats--;
+        } else {
+            System.out.println("This seat is already booked");
         }
 
     }
@@ -185,40 +179,21 @@ public class BusBooking {
 
         Bus curr_bus = buses.get(Bus_no);
 
-        if (curr_bus.BusType.equals("Travels")) {
-            int[] s = curr_bus.seats;
-            int count = 0;
-            for (int k = 1; k < s.length; k++) {
-                count = 0;
-                int l = 0;
-                for (l = k; count < 5; l++) {
+        int[] s = curr_bus.seats;
+        int count = 0;
+        for (int k = 1; k < s.length; k++) {
+            count = 0;
+            int l = 0;
+            for (l = k; count < 5; l++) {
 
-                    System.out.printf("%2d ", s[l], " ");
-                    if (count == 1) {
-                        System.out.print("  ");
-                    }
-                    count++;
+                System.out.printf("%2d ", s[l], " ");
+                if (count == 1) {
+                    System.out.print("  ");
                 }
-                k = l--;
-                System.out.println();
+                count++;
             }
-        } else if (curr_bus.BusType.equals("Express")) {
-            int[] s = curr_bus.seats;
-            int count = 0;
-            for (int k = 1; k < s.length; k++) {
-                count = 0;
-                int l = 0;
-                for (l = k; count < 5; l++) {
-                    System.out.printf("%2d ", s[l], " ");
-                    if (count == 1) {
-                        System.out.print("  ");
-                    }
-                    count++;
-                }
-                l = l - 1;
-                k = l;
-                System.out.println();
-            }
+            k = l--;
+            System.out.println();
         }
 
     }
