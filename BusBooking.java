@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class BusBooking {
-    // ArrayList<Bus> buses = new ArrayList<Bus>();
+
     HashMap<Integer, Bus> buses = new HashMap<Integer, Bus>();
     HashMap<Integer, User> users = new HashMap<Integer, User>();
     ArrayList<BookingDetails> bookings = new ArrayList<BookingDetails>();
@@ -186,7 +186,9 @@ public class BusBooking {
                 curr_Bus.AvailableSeats++;
                 break;
             }
+
         }
+
     }
 
 }
