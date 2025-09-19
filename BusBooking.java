@@ -1,3 +1,4 @@
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -5,7 +6,7 @@ import java.util.List;
 public class BusBooking {
     // ArrayList<Bus> buses = new ArrayList<Bus>();
     HashMap<Integer, Bus> buses = new HashMap<Integer, Bus>();
-
+    HashMap<Integer, User> users = new HashMap<Integer, User>();
     ArrayList<BookingDetails> bookings = new ArrayList<BookingDetails>();
 
     public void intitialize() {
@@ -18,24 +19,6 @@ public class BusBooking {
         b1.TotalSeats = b1.AvailableSeats = Bus.EXPRESS_SEATS;
         buses.put(b1.BusNo, b1);
 
-        // BookingDetails d7 = new BookingDetails();
-        // d7.user_Name = "naveen";
-        // d7.user_Phone = "1234354556";
-        // d7.user_Age = 27;
-        // d7.user_Destination = "Bengalore";
-        // d7.bus_no = 12343;
-        // d7.seat_No = 24;
-        // bookings.add(d7);
-
-        // BookingDetails d8 = new BookingDetails();
-        // d8.user_Name = "priya";
-        // d8.user_Phone = "1234354556";
-        // d8.user_Age = Bus.TRAVEL_SEATS;
-        // d8.user_Destination = "Bengalore";
-        // d8.bus_no = 12343;
-        // d8.seat_No = 22;
-        // bookings.add(d8);
-
         Bus b2 = new Bus();
         b2.BusNo = 12345;
         b2.BusType = "Travels";
@@ -44,24 +27,6 @@ public class BusBooking {
         b2.seats = new int[Bus.TRAVEL_SEATS];
         b2.TotalSeats = b2.AvailableSeats = Bus.TRAVEL_SEATS;
         buses.put(b2.BusNo, b2);
-
-        // BookingDetails d5 = new BookingDetails();
-        // d5.user_Name = "naveen";
-        // d5.user_Phone = "1234354556";
-        // d5.user_Age = 27;
-        // d5.user_Destination = "Madanapalli";
-        // d5.bus_no = 12345;
-        // d5.seat_No = 24;
-        // bookings.add(d5);
-
-        // BookingDetails d6 = new BookingDetails();
-        // d6.user_Name = "priya";
-        // d6.user_Phone = "1234354556";
-        // d6.user_Age = Bus.TRAVEL_SEATS;
-        // d6.user_Destination = "Madanapalli";
-        // d6.bus_no = 12345;
-        // d6.seat_No = 22;
-        // bookings.add(d6);
 
         Bus b3 = new Bus();
         b3.BusNo = 12348;
@@ -72,24 +37,6 @@ public class BusBooking {
         b3.TotalSeats = b3.AvailableSeats = Bus.TRAVEL_SEATS;
         buses.put(b3.BusNo, b3);
 
-        // BookingDetails d1 = new BookingDetails();
-        // d1.user_Name = "naveen";
-        // d1.user_Phone = "1234354556";
-        // d1.user_Age = 27;
-        // d1.user_Destination = "Bengalore";
-        // d1.bus_no = 12348;
-        // d1.seat_No = 24;
-        // bookings.add(d1);
-
-        // BookingDetails d2 = new BookingDetails();
-        // d2.user_Name = "priya";
-        // d2.user_Phone = "1234354556";
-        // d2.user_Age = Bus.TRAVEL_SEATS;
-        // d2.user_Destination = "Bengalore";
-        // d2.bus_no = 12348;
-        // d2.seat_No = 22;
-        // bookings.add(d2);
-
         Bus b4 = new Bus();
         b4.BusNo = 12346;
         b4.BusType = "Express";
@@ -99,23 +46,54 @@ public class BusBooking {
         b4.TotalSeats = b4.AvailableSeats = Bus.EXPRESS_SEATS;
         buses.put(b4.BusNo, b4);
 
-        // BookingDetails d3 = new BookingDetails();
-        // d3.user_Name = "naveen";
-        // d3.user_Phone = "1234354556";
-        // d3.user_Age = 27;
-        // d3.user_Destination = "Madanapalli";
-        // d3.bus_no = 12346;
-        // d3.seat_No = 24;
-        // bookings.add(d3);
+        User u1 = new User();
+        u1.UserName = "priya";
+        u1.User_Phone = "8247780548";
+        u1.UserAge = 21;
+        u1.User_Id = 121;
+        users.put(121, u1);
 
-        // BookingDetails d4 = new BookingDetails();
-        // d4.user_Name = "priya";
-        // d4.user_Phone = "1234354556";
-        // d4.user_Age = Bus.TRAVEL_SEATS;
-        // d4.user_Destination = "Madanapalli";
-        // d4.bus_no = 12346;
-        // d4.seat_No = 22;
-        // bookings.add(d4);
+        User u2 = new User();
+        u2.UserName = "naveen";
+        u2.User_Phone = "7019462108";
+        u2.UserAge = 27;
+        u2.User_Id = 122;
+        users.put(122, u2);
+
+        User u3 = new User();
+        u3.UserName = "hari";
+        u3.User_Phone = "123456789";
+        u3.UserAge = 21;
+        u3.User_Id = 123;
+        users.put(123, u3);
+
+        User u4 = new User();
+        u4.UserName = "bala";
+        u4.User_Phone = "987654321";
+        u4.UserAge = 20;
+        u4.User_Id = 124;
+        users.put(124, u4);
+
+        User u5 = new User();
+        u5.UserName = "lav";
+        u5.User_Phone = "6701651212";
+        u5.UserAge = 21;
+        u5.User_Id = 125;
+        users.put(125, u5);
+
+        User u6 = new User();
+        u6.UserName = "Ammu";
+        u6.User_Phone = "9010046682";
+        u6.UserAge = 21;
+        u6.User_Id = 126;
+        users.put(126, u6);
+
+        User u8 = new User();
+        u8.UserName = "jyo";
+        u8.User_Phone = "0987654321";
+        u8.UserAge = 22;
+        u8.User_Id = 127;
+        users.put(127, u8);
     }
 
     public void searchBuses(String from, String to) {
@@ -152,21 +130,18 @@ public class BusBooking {
                 bookSeat.TotalSeats, bookSeat.AvailableSeats);
     }
 
-    public void bookingSeats(String name, String phone, int age, int Bus_no, int seatNo) {
+    public void bookSeat(int userId, int Bus_no, int seatNo) {
         Bus curr_bus = buses.get(Bus_no);
-
+        User curr_user = users.get(userId);
         BookingDetails bookingDetails = new BookingDetails();
-        bookingDetails.user_Name = name;
-        bookingDetails.user_Phone = phone;
-        bookingDetails.user_Age = age;
-        bookingDetails.bus_no = Bus_no;
-        bookingDetails.user_Destination = curr_bus.Destination;
-        bookingDetails.bus_Type = curr_bus.BusType;
+        bookingDetails.bus_no = curr_bus.BusNo;
         bookingDetails.seat_No = seatNo;
+        bookingDetails.user_Id = curr_user.User_Id;
+        bookingDetails.BookedAt = LocalDateTime.now();
         bookings.add(bookingDetails);
 
         int[] s = curr_bus.seats;
-        if (s[seatNo]==0) {
+        if (s[seatNo] == 0) {
             s[seatNo] = 1;
             curr_bus.AvailableSeats--;
         } else {
@@ -199,25 +174,18 @@ public class BusBooking {
 
     }
 
-    public void seatCancellation(String name, String phone, int age, int Bus_no, int seatNo) {
+    public void cancelSeat(int userId, int Bus_no, int seatNo) {
 
-        Bus curr_bus = buses.get(Bus_no);
-        if (curr_bus.BusNo == Bus_no) {
-            BookingDetails bookingDetails = new BookingDetails();
-            bookingDetails.user_Name = name;
-            bookingDetails.user_Phone = phone;
-            bookingDetails.user_Age = age;
-            bookingDetails.bus_no = Bus_no;
-            bookingDetails.user_Destination = curr_bus.Destination;
-            bookingDetails.bus_Type = curr_bus.BusType;
-            bookingDetails.seat_No = seatNo;
-            bookings.remove(bookingDetails);
-
-            int[] s = curr_bus.seats;
-
-            s[seatNo] = 0;
-            curr_bus.AvailableSeats++;
-
+        Bus curr_Bus = buses.get(Bus_no);
+        for (int i = 0; i < bookings.size(); i++) {
+            BookingDetails curr_Booking = bookings.get(i);
+            if (curr_Booking.user_Id == userId && curr_Booking.bus_no == curr_Bus.BusNo) {
+                bookings.remove(curr_Booking);
+                int[] s = curr_Bus.seats;
+                s[seatNo] = 0;
+                curr_Bus.AvailableSeats++;
+                break;
+            }
         }
     }
 

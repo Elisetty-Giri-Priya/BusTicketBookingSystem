@@ -41,35 +41,24 @@ public class Main {
 
                     break;
                 case 5:
-                    System.out.println("Enter your Name:");
-                     sc.nextLine();
-                    String name = sc.nextLine();
-                   
-                    System.out.println("Enter your Phone Number:");
-                    String phone = sc.nextLine();
-                    System.out.println("Enter your Age:");
-                    int age = sc.nextInt();
+                    System.out.println("Enter your Userid:");
+                    int id = sc.nextInt();
                     System.out.println("Bus No:");
                     int bno = sc.nextInt();
                     b1.displaySeats(bno);
                     System.out.println("Enter your seat number:");
                     int sno = sc.nextInt();
-                    b1.bookingSeats(name, phone, age, bno, sno);
+                    b1.bookSeat(id, bno, sno);
                     break;
                 case 6:
-                    System.out.println("Enter your Name:");
-                    String Cname = sc.nextLine();
-                    sc.nextLine();
-                    System.out.println("Enter your Phone Number:");
-                    String Cphone = sc.nextLine();
-                    System.out.println("Enter your Age:");
-                    int Cage = sc.nextInt();
+                    System.out.println("Enter your Userid:");
+                    int Uid = sc.nextInt();
                     System.out.println("Bus No:");
                     int Cbno = sc.nextInt();
-                    b1.displaySeats(Cbno);
+                    // b1.displaySeats(Cbno);
                     System.out.println("Enter your seat number:");
                     int Csno = sc.nextInt();
-                    b1.seatCancellation(Cname, Cphone, Cage, Cbno, Csno);
+                    b1.cancelSeat(Uid,Cbno,Csno);
             }
         }
     }
