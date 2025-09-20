@@ -138,6 +138,7 @@ public class BusBooking {
         bookingDetails.seat_No = seatNo;
         bookingDetails.user_Id = curr_user.User_Id;
         bookingDetails.BookedAt = LocalDateTime.now();
+        bookingDetails.status=BookingStatus.booked;
         bookings.add(bookingDetails);
 
         int[] s = curr_bus.seats;
@@ -180,15 +181,26 @@ public class BusBooking {
         for (int i = 0; i < bookings.size(); i++) {
             BookingDetails curr_Booking = bookings.get(i);
             if (curr_Booking.user_Id == userId && curr_Booking.bus_no == curr_Bus.BusNo) {
-                bookings.remove(curr_Booking);
+                // bookings.remove(curr_Booking);
+                curr_Booking.status=BookingStatus.cancelled;
                 int[] s = curr_Bus.seats;
                 s[seatNo] = 0;
                 curr_Bus.AvailableSeats++;
                 break;
             }
+            else{
+                System.out.println("The seat is not cancelled.Because the seat is not booked");
+            }
 
         }
 
+    }
+    public void displayBookings(){
+      System.out.printf("%10s %10s %10s %30s %15s\n", "User_id", "Bus_No", "SeatNo", "BookedAt","status");  
+      for(int i=0;i<bookings.size();i++){
+        BookingDetails curr_Booking=bookings.get(i);
+        System.out.printf("%10d %10d %10d %30d %15s\n", curr_Booking.user_Id,curr_Booking.bus_no,curr_Booking.seat_No,curr_Booking.BookedAt,curr_Booking.status);
+      }
     }
 
 }

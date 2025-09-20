@@ -5,5 +5,6 @@ public class BookingDetails {
     public int bus_no;
     public int seat_No;
     public LocalDateTime BookedAt;
-    
+    public  BookingStatus status;
+   
 }

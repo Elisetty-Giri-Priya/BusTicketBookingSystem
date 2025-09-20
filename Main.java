@@ -11,7 +11,8 @@ public class Main {
             System.out.println("3.Search Seats");
             System.out.println("4.Display Seats");
             System.out.println("5.Booking seats");
-            System.out.println("6.Seat Cancellation");
+            System.out.println("6.Cancel Seat");
+            System.out.println("7.Diplay bookings");
             System.out.println("Enter your Option:");
             int option = sc.nextInt();
             switch (option) {
@@ -59,6 +60,9 @@ public class Main {
                     System.out.println("Enter your seat number:");
                     int Csno = sc.nextInt();
                     b1.cancelSeat(Uid,Cbno,Csno);
+                    break;
+                case 7:
+                b1.displayBookings();
             }
         }
     }
