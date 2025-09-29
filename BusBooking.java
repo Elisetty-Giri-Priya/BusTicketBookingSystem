@@ -8,6 +8,7 @@ public class BusBooking {
     HashMap<Integer, Bus> buses = new HashMap<Integer, Bus>();
     HashMap<Integer, User> users = new HashMap<Integer, User>();
     ArrayList<BookingDetails> bookings = new ArrayList<BookingDetails>();
+    ArrayList<UserRegister> registerations = new ArrayList<UserRegister>();
 
     public void intitialize() {
         Bus b1 = new Bus();
@@ -94,12 +95,48 @@ public class BusBooking {
         u8.UserAge = 22;
         u8.User_Id = 127;
         users.put(127, u8);
+
+        // UserRegister r1 = new UserRegister();
+        // r1.fullName = "Priya";
+        // r1.age = 23;
+        // r1.password = "@2003";
+        // r1.userName = "priya";
+        // r1.phone = "8247780548";
+        // r1.email = "priya@gmail.com";
+        // registerations.add(r1);
+
+        // UserRegister r2 = new UserRegister();
+        // r2.fullName = "Giri";
+        // r2.age = 23;
+        // r2.password = "@2004";
+        // r2.userName = "giri";
+        // r2.phone = "123456789";
+        // r2.email = "giri@gmail.com";
+        // registerations.add(r2);
+
+        // UserRegister r3 = new UserRegister();
+        // r3.fullName = "Naveen";
+        // r3.age = 27;
+        // r3.password = "@Navee";
+        // r3.userName = "naveen";
+        // r3.phone = "7019462108";
+        // r3.email = "naveen@gmail.com";
+        // registerations.add(r3);
+
+        // UserRegister r4 = new UserRegister();
+        // r4.fullName = "lavanya";
+        // r4.age = 23;
+        // r4.password = "@2025";
+        // r4.userName = "Lavanya";
+        // r4.phone = "760165100";
+        // r4.email = "lavanya@gmail.com";
+        // registerations.add(r4);
+
     }
 
     public void searchBuses(String from, String to) {
         System.out.printf("%10s %10s %15s %30s\n", "Bus_No", "Type", "Source", "Destination");
         List<Bus> list = List.copyOf(buses.values());
-
         for (int i = 0; i < list.size(); i++) {
             Bus currentBus = list.get(i);
             if (currentBus.Source.equals(from) && currentBus.Destination.equals(to)) {
@@ -130,31 +167,31 @@ public class BusBooking {
                 bookSeat.TotalSeats, bookSeat.AvailableSeats);
     }
 
-    public void bookSeat(int userId, int Bus_no, int seatNo) {
+    public void bookSeat(String userName, int Bus_no, int seatNo) {
         Bus curr_bus = buses.get(Bus_no);
-        User curr_user = users.get(userId);
-        BookingDetails bookingDetails = new BookingDetails();
-        bookingDetails.bus_no = curr_bus.BusNo;
-        bookingDetails.seat_No = seatNo;
-        bookingDetails.user_Id = curr_user.User_Id;
-        bookingDetails.BookedAt = LocalDateTime.now();
-        bookingDetails.status=BookingStatus.booked;
-        bookings.add(bookingDetails);
-
-        int[] s = curr_bus.seats;
-        if (s[seatNo] == 0) {
-            s[seatNo] = 1;
-            curr_bus.AvailableSeats--;
-        } else {
-            System.out.println("This seat is already booked");
+        for (int i = 0; i < registerations.size(); i++) {
+            UserRegister curr_registeration = registerations.get(i);
+            if (curr_registeration.userName.equals(userName)) {
+                BookingDetails bookingDetails = new BookingDetails();
+                bookingDetails.bus_no = curr_bus.BusNo;
+                bookingDetails.seat_No = seatNo;
+                bookingDetails.userName = curr_registeration.userName;
+                bookingDetails.BookedAt = LocalDateTime.now();
+                bookingDetails.status = BookingStatus.booked;
+                bookings.add(bookingDetails);
+                int[] s = curr_bus.seats;
+                if (s[seatNo] == 0) {
+                    s[seatNo] = 1;
+                    curr_bus.AvailableSeats--;
+                } else {
+                    System.out.println("This seat is already booked");
+                }
+            }
         }
-
     }
 
     public void displaySeats(int Bus_no) {
-
         Bus curr_bus = buses.get(Bus_no);
-
         int[] s = curr_bus.seats;
         int count = 0;
         for (int k = 1; k < s.length; k++) {
@@ -175,32 +212,70 @@ public class BusBooking {
 
     }
 
-    public void cancelSeat(int userId, int Bus_no, int seatNo) {
-
+    public void cancelSeat(String username, int Bus_no, int seatNo) {
         Bus curr_Bus = buses.get(Bus_no);
+        boolean isFound = true;
         for (int i = 0; i < bookings.size(); i++) {
             BookingDetails curr_Booking = bookings.get(i);
-            if (curr_Booking.user_Id == userId && curr_Booking.bus_no == curr_Bus.BusNo) {
-                // bookings.remove(curr_Booking);
-                curr_Booking.status=BookingStatus.cancelled;
+            if (curr_Booking.userName.equals(username) && curr_Booking.bus_no == curr_Bus.BusNo) {
+                isFound = false;
+                curr_Booking.status = BookingStatus.cancelled;
                 int[] s = curr_Bus.seats;
                 s[seatNo] = 0;
                 curr_Bus.AvailableSeats++;
                 break;
             }
-            else{
-                System.out.println("The seat is not cancelled.Because the seat is not booked");
-            }
+        }
+        if (isFound) {
+            System.out.println("The seat is not cancelled.Because the seat is not booked");
 
         }
 
     }
-    public void displayBookings(){
-      System.out.printf("%10s %10s %10s %30s %15s\n", "User_id", "Bus_No", "SeatNo", "BookedAt","status");  
-      for(int i=0;i<bookings.size();i++){
-        BookingDetails curr_Booking=bookings.get(i);
-        System.out.printf("%10d %10d %10d %30d %15s\n", curr_Booking.user_Id,curr_Booking.bus_no,curr_Booking.seat_No,curr_Booking.BookedAt,curr_Booking.status);
-      }
+
+    public void displayBookings() {
+        System.out.printf("%15s %10s %10s %30s %15s\n", "User_Name", "Bus_No", "SeatNo", "BookedAt", "status");
+        for (int i = 0; i < bookings.size(); i++) {
+            BookingDetails curr_Booking = bookings.get(i);
+            System.out.printf("%15s %10d %10d %30s %15s\n", curr_Booking.userName, curr_Booking.bus_no,
+                    curr_Booking.seat_No, curr_Booking.BookedAt, curr_Booking.status);
+        }
+    }
+
+    public void registerAUser(String fullname, int age, String username, String password, String phone, String email) {
+        UserRegister u1 = new UserRegister();
+        u1.fullName = fullname;
+        u1.age = age;
+        boolean isFound = true;
+        for (int i = 0; i < registerations.size(); i++) {
+            UserRegister curr_Register = registerations.get(i);
+            if (curr_Register.userName.equals(username)) {
+                isFound = false;
+                System.out.println("User name is already exist. Please give unique userName");
+                break;
+            }
+        }
+        if (isFound) {
+            u1.userName = username;
+        }
+        u1.password = password;
+        u1.phone = phone;
+        u1.email = email;
+        registerations.add(u1);
+        System.out.println("Successfully Registered");
+    }
+
+    public boolean userLogin(String username, String Password) {
+        boolean isFound = false;
+        for (int i = 0; i < registerations.size(); i++) {
+            UserRegister curr_Registeration = registerations.get(i);
+            if (curr_Registeration.userName.equals(username) && curr_Registeration.password.equals(Password)) {
+                isFound = true;
+
+            }
+
+        }
+        return isFound;
     }
 
 }
