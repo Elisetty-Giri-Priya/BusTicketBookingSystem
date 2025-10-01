@@ -9,6 +9,7 @@ public class BusBooking {
     HashMap<Integer, User> users = new HashMap<Integer, User>();
     ArrayList<BookingDetails> bookings = new ArrayList<BookingDetails>();
     ArrayList<UserRegister> registerations = new ArrayList<UserRegister>();
+    String curr_user = "";
 
     public void intitialize() {
         Bus b1 = new Bus();
@@ -167,26 +168,22 @@ public class BusBooking {
                 bookSeat.TotalSeats, bookSeat.AvailableSeats);
     }
 
-    public void bookSeat(String userName, int Bus_no, int seatNo) {
+    public void bookSeat(int Bus_no, int seatNo) {
         Bus curr_bus = buses.get(Bus_no);
-        for (int i = 0; i < registerations.size(); i++) {
-            UserRegister curr_registeration = registerations.get(i);
-            if (curr_registeration.userName.equals(userName)) {
-                BookingDetails bookingDetails = new BookingDetails();
-                bookingDetails.bus_no = curr_bus.BusNo;
-                bookingDetails.seat_No = seatNo;
-                bookingDetails.userName = curr_registeration.userName;
-                bookingDetails.BookedAt = LocalDateTime.now();
-                bookingDetails.status = BookingStatus.booked;
-                bookings.add(bookingDetails);
-                int[] s = curr_bus.seats;
-                if (s[seatNo] == 0) {
-                    s[seatNo] = 1;
-                    curr_bus.AvailableSeats--;
-                } else {
-                    System.out.println("This seat is already booked");
-                }
-            }
+
+        BookingDetails bookingDetails = new BookingDetails();
+        bookingDetails.bus_no = curr_bus.BusNo;
+        bookingDetails.seat_No = seatNo;
+        bookingDetails.userName = curr_user;
+        bookingDetails.BookedAt = LocalDateTime.now();
+        bookingDetails.status = BookingStatus.booked;
+        bookings.add(bookingDetails);
+        int[] s = curr_bus.seats;
+        if (s[seatNo] == 0) {
+            s[seatNo] = 1;
+            curr_bus.AvailableSeats--;
+        } else {
+            System.out.println("This seat is already booked");
         }
     }
 
@@ -212,12 +209,12 @@ public class BusBooking {
 
     }
 
-    public void cancelSeat(String username, int Bus_no, int seatNo) {
+    public void cancelSeat(int Bus_no, int seatNo) {
         Bus curr_Bus = buses.get(Bus_no);
         boolean isFound = true;
         for (int i = 0; i < bookings.size(); i++) {
             BookingDetails curr_Booking = bookings.get(i);
-            if (curr_Booking.userName.equals(username) && curr_Booking.bus_no == curr_Bus.BusNo) {
+            if (curr_Booking.userName.equals(curr_user) && curr_Booking.bus_no == curr_Bus.BusNo) {
                 isFound = false;
                 curr_Booking.status = BookingStatus.cancelled;
                 int[] s = curr_Bus.seats;
@@ -271,9 +268,8 @@ public class BusBooking {
             UserRegister curr_Registeration = registerations.get(i);
             if (curr_Registeration.userName.equals(username) && curr_Registeration.password.equals(Password)) {
                 isFound = true;
-
+                curr_user = username;
             }
-
         }
         return isFound;
     }

@@ -16,9 +16,8 @@ public class Main {
                     sc.nextLine();
                     String fn = sc.nextLine();
                     System.out.println("Enter your Age");
-                    int age = sc.nextInt();
+                    int age = Integer.parseInt(sc.nextLine());
                     System.out.println("Enter your User Name");
-                    sc.nextLine();
                     String us = sc.nextLine();
                     System.out.println("Enter your password");
                     String ps = sc.nextLine();
@@ -26,7 +25,7 @@ public class Main {
                     String ph = sc.nextLine();
                     System.out.println("Enter your emailId");
                     String email = sc.nextLine();
-                    b1.registerAUser(fn, age, ps, us, ph, email);
+                    b1.registerAUser(fn, age, us, ps, ph, email);
                     break;
                 case 2:
                     System.out.println("Enter your user Name");
@@ -35,6 +34,7 @@ public class Main {
                     System.out.println("Enter your passWord");
                     String psw = sc.nextLine();
                     boolean isfound = b1.userLogin(usn, psw);
+                    int Option = 0;
                     if (isfound) {
                         System.out.println("Successfully Logined");
                         while (true) {
@@ -45,8 +45,9 @@ public class Main {
                             System.out.println("7.Booking seats");
                             System.out.println("8.Cancel Seat");
                             System.out.println("9.Diplay bookings");
+                            System.out.println("10.LogOut");
                             System.out.println("Enter your Option:");
-                            int Option = sc.nextInt();
+                            Option = sc.nextInt();
                             switch (Option) {
 
                                 case 3:
@@ -54,7 +55,6 @@ public class Main {
                                     break;
                                 case 4:
                                     System.out.println("From:");
-                                    sc.nextLine();
                                     String Source = sc.nextLine();
                                     // sc.nextLine();
                                     System.out.println("To:");
@@ -64,42 +64,43 @@ public class Main {
                                 case 5:
 
                                     System.out.println("Bus N0:");
-                                    int busNo = sc.nextInt();
+                                    int busNo = Integer.parseInt(sc.nextLine());
                                     b1.searchSeats(busNo);
                                     break;
                                 case 6:
                                     System.out.println("Bus No:");
-                                    int num = sc.nextInt();
+                                    int num = Integer.parseInt(sc.nextLine());
                                     b1.displaySeats(num);
-
                                     break;
                                 case 7:
-                                    System.out.println("Enter your UserName:");
-                                    sc.nextLine();
-                                    String uname = sc.nextLine();
                                     System.out.println("Bus No:");
-                                    int bno = sc.nextInt();
+                                    int bno = Integer.parseInt(sc.nextLine());
                                     b1.displaySeats(bno);
                                     System.out.println("Enter your seat number:");
-                                    int sno = sc.nextInt();
-                                    b1.bookSeat(uname, bno, sno);
+                                    int sno = Integer.parseInt(sc.nextLine());
+                                    b1.bookSeat(bno, sno);
                                     break;
                                 case 8:
-                                    System.out.println("Enter your UserName:");
-                                    sc.nextLine();
-                                    String usname = sc.nextLine();
                                     System.out.println("Bus No:");
                                     int Cbno = sc.nextInt();
                                     // b1.displaySeats(Cbno);
                                     System.out.println("Enter your seat number:");
-                                    int Csno = sc.nextInt();
-                                    b1.cancelSeat(usname, Cbno, Csno);
+                                    int Csno = Integer.parseInt(sc.nextLine());
+                                    b1.cancelSeat(Cbno, Csno);
                                     break;
                                 case 9:
                                     b1.displayBookings();
+                                    break;
+                                // case 10:
+                                // break;
 
                             }
+                            if (Option == 10) {
+                                break;
+                            }
                         }
+                        // } else if (Option == 10) {
+                        // break;
                     } else {
                         System.out.println(
                                 "Your User Name and password are not matched. Please enter your correct user name and password!");
