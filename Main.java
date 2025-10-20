@@ -1,3 +1,5 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Main {
@@ -38,8 +40,8 @@ public class Main {
                     if (isfound) {
                         System.out.println("Successfully Logined");
                         while (true) {
-                            System.out.println("3.List Buses");
-                            System.out.println("4.Search Buses");
+                            System.out.println("3.List Trips");
+                            System.out.println("4.Search Trips");
                             System.out.println("5.Search Seats");
                             System.out.println("6.Display Seats");
                             System.out.println("7.Booking seats");
@@ -51,42 +53,70 @@ public class Main {
                             switch (Option) {
 
                                 case 3:
-                                    b1.listBuses();
+                                    b1.listTrips();
                                     break;
                                 case 4:
-                                    System.out.println("From:");
-                                    String Source = sc.nextLine();
-                                    // sc.nextLine();
-                                    System.out.println("To:");
+                                    System.out.println("Enter date and time (format: yyyy-MM-dd HH:mm):");
+                                    sc.nextLine();
+                                    String input = sc.nextLine();
+                                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                                    LocalDateTime dateTime = LocalDateTime.parse(input, formatter);
+                                    System.out.println("Enter your Destination:");
                                     String Destination = sc.nextLine();
-                                    b1.searchBuses(Source, Destination);
+                                    b1.searchTrips(dateTime, Destination);
                                     break;
                                 case 5:
-
+                                    // LocalDateTime departuretime, String destination, int Bus_No
+                                    System.out.println("Enter date and time (format: yyyy-MM-dd HH:mm):");
+                                    sc.nextLine();
+                                    String Input = sc.nextLine();
+                                    DateTimeFormatter Formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                                    LocalDateTime date_time = LocalDateTime.parse(Input, Formatter);
+                                    System.out.println("Enter your Destination");
+                                    String dest = sc.nextLine();
                                     System.out.println("Bus N0:");
                                     int busNo = Integer.parseInt(sc.nextLine());
-                                    b1.searchSeats(busNo);
+                                    b1.searchSeats(date_time, dest, busNo);
                                     break;
                                 case 6:
+                                    // LocalDateTime departuretime, int Bus_no
+                                    System.out.println("Enter date and time (format: yyyy-MM-dd HH:mm):");
+                                    sc.nextLine();
+                                    String in = sc.nextLine();
+                                    DateTimeFormatter Format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                                    LocalDateTime date_Time = LocalDateTime.parse(in, Format);
                                     System.out.println("Bus No:");
                                     int num = Integer.parseInt(sc.nextLine());
-                                    b1.displaySeats(num);
+                                    b1.displaySeats(date_Time, num);
                                     break;
                                 case 7:
+                                    // LocalDateTime departureTime, String Destination, int Bus_no, int seatNo
+                                    System.out.println("Enter date and time (format: yyyy-MM-dd HH:mm):");
+                                    sc.nextLine();
+                                    String inp = sc.nextLine();
+                                    DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                                    LocalDateTime datetTime = LocalDateTime.parse(inp, format);
+                                    System.out.println("Enter your Destination");
+                                    String desti = sc.nextLine();
                                     System.out.println("Bus No:");
                                     int bno = Integer.parseInt(sc.nextLine());
-                                    b1.displaySeats(bno);
+                                    b1.displaySeats(datetTime, bno);
                                     System.out.println("Enter your seat number:");
                                     int sno = Integer.parseInt(sc.nextLine());
-                                    b1.bookSeat(bno, sno);
+                                    b1.bookSeat(datetTime, desti, bno, sno);
                                     break;
                                 case 8:
+                                    System.out.println("Enter date and time (format: yyyy-MM-dd HH:mm):");
+                                    sc.nextLine();
+                                    String inpu = sc.nextLine();
+                                    DateTimeFormatter formatt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                                    LocalDateTime datendTime = LocalDateTime.parse(inpu, formatt);
                                     System.out.println("Bus No:");
-                                    int Cbno = sc.nextInt();
+                                    int Cbno = Integer.parseInt(sc.nextLine());
                                     // b1.displaySeats(Cbno);
                                     System.out.println("Enter your seat number:");
                                     int Csno = Integer.parseInt(sc.nextLine());
-                                    b1.cancelSeat(Cbno, Csno);
+                                    b1.cancelSeat(datendTime, Cbno, Csno);
                                     break;
                                 case 9:
                                     b1.displayBookings();

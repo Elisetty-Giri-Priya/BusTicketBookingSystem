@@ -1,10 +1,9 @@
-import java.util.HashMap;
 
 public class Bus {
     public int BusNo;
     public String BusType;
-    public String Source;
-    public String Destination;
+    // public String Source;
+    // public String Destination;
     public int TotalSeats;
     public int AvailableSeats;
      public int[] seats;
