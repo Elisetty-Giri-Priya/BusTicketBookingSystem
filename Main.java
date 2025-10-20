@@ -97,7 +97,7 @@ public class Main {
                                     DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
                                     LocalDateTime datetTime = LocalDateTime.parse(inp, format);
                                     System.out.println("Enter your Source");
-                                    String source=sc.nextLine();
+                                    String source = sc.nextLine();
                                     System.out.println("Enter your Destination");
                                     String desti = sc.nextLine();
                                     System.out.println("Bus No:");
@@ -105,7 +105,7 @@ public class Main {
                                     b1.displaySeats(datetTime, bno);
                                     System.out.println("Enter your seat number:");
                                     int sno = Integer.parseInt(sc.nextLine());
-                                    b1.bookSeat(datetTime,source, desti, bno, sno);
+                                    b1.bookSeat(datetTime, source, desti, bno, sno);
                                     break;
                                 case 8:
                                     System.out.println("Enter date and time (format: yyyy-MM-dd HH:mm):");
