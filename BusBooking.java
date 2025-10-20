@@ -372,14 +372,16 @@ public class BusBooking {
         }
     }
 
-    public void bookSeat(LocalDateTime departureTime, String Destination, int Bus_no, int seatNo) {
+    public void bookSeat(LocalDateTime departureTime,String source, String Destination, int Bus_no, int seatNo) {
         for (int i = 0; i < trips.size(); i++) {
             Trip curr_trip = trips.get(i);
             if (curr_trip.busno == Bus_no && curr_trip.departureTime.equals(departureTime)
                     && curr_trip.destination.equals(Destination)) {
                 BookingDetails bookingDetails = new BookingDetails();
-                bookingDetails.bus_no = curr_trip.busno;
                 bookingDetails.userName = curr_user;
+                bookingDetails.bus_no = Bus_no;
+                bookingDetails.source=source;
+                bookingDetails.destination=Destination;
                 bookingDetails.seat_No = seatNo;
                 bookingDetails.BookedAt = departureTime;
                 bookingDetails.status = BookingStatus.booked;
