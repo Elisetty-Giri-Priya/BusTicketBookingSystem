@@ -1,3 +1,5 @@
+import java.text.DateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -56,14 +58,16 @@ public class Main {
                                     b1.listTrips();
                                     break;
                                 case 4:
-                                    System.out.println("Enter date and time (format: yyyy-MM-dd HH:mm):");
+                                    System.out.println("Enter date and time (format: yyyy-MM-dd ):");
                                     sc.nextLine();
                                     String input = sc.nextLine();
-                                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-                                    LocalDateTime dateTime = LocalDateTime.parse(input, formatter);
+                                    DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                                    LocalDate date = LocalDate.parse(input, inputFormat);
+                                    System.out.println("Enter your Source");
+                                    String source = sc.nextLine();
                                     System.out.println("Enter your Destination:");
                                     String Destination = sc.nextLine();
-                                    b1.searchTrips(dateTime, Destination);
+                                    b1.searchTrips(date, source, Destination);
                                     break;
                                 case 5:
                                     // LocalDateTime departuretime, String destination, int Bus_No
@@ -97,7 +101,7 @@ public class Main {
                                     DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
                                     LocalDateTime datetTime = LocalDateTime.parse(inp, format);
                                     System.out.println("Enter your Source");
-                                    String source = sc.nextLine();
+                                    String Source = sc.nextLine();
                                     System.out.println("Enter your Destination");
                                     String desti = sc.nextLine();
                                     System.out.println("Bus No:");
@@ -105,7 +109,7 @@ public class Main {
                                     b1.displaySeats(datetTime, bno);
                                     System.out.println("Enter your seat number:");
                                     int sno = Integer.parseInt(sc.nextLine());
-                                    b1.bookSeat(datetTime, source, desti, bno, sno);
+                                    b1.bookSeat(datetTime, Source, desti, bno, sno);
                                     break;
                                 case 8:
                                     System.out.println("Enter date and time (format: yyyy-MM-dd HH:mm):");

@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -337,12 +338,13 @@ public class BusBooking {
 
     }
 
-    public void searchTrips(LocalDateTime departure_time, String destination_) {
+    public void searchTrips(LocalDate departureDate, String source, String destination_) {
         System.out.printf("%20s %20s %15s %15s %15s\n", "Departure_time", "Arrival_time", "Source", "Destination",
                 "Bus_no");
         for (int i = 0; i < trips.size(); i++) {
             Trip curr_trip = trips.get(i);
-            if (curr_trip.departureTime.equals(departure_time) && curr_trip.destination.equals(destination_)) {
+            if (curr_trip.departureTime.toLocalDate().equals(departureDate) && curr_trip.source.equals(source)
+                    && curr_trip.destination.equals(destination_)) {
                 System.out.printf("%20s %20s %15s %15s %15d\n", curr_trip.departureTime, curr_trip.arrivalTime,
                         curr_trip.source, curr_trip.destination, curr_trip.busno);
             }
