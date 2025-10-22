@@ -1,4 +1,3 @@
-// import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Trip {
@@ -10,10 +9,11 @@ public class Trip {
     public String source;
     public String destination;
     public int busno;
-    public int[] busseats; 
+    public int[] busseats;
     public int AvailableSeats;
+    // public String tripTicket;
 
-    static public int travel_seats=21;
-    static public int express_seats=31;
+    static public int travel_seats = 21;
+    static public int express_seats = 31;
 
-} 
+}

@@ -6,8 +6,8 @@ public class BookingDetails {
     public int bus_no;
     public String source;
     public String destination;
-    public int seat_No;
+    public String ticket;
     public LocalDateTime BookedAt;
-    public  BookingStatus status;
-   
+    public BookingStatus status;
+
 }

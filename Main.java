@@ -85,12 +85,9 @@ public class Main {
                                     b1.bookSeat(tid, sno);
                                     break;
                                 case 8:
-                                    System.out.println("Enter the Tripid");
-                                    int tripId = Integer.parseInt(sc.nextLine());
-                                    // b1.displaySeats(Cbno);
-                                    System.out.println("Enter your seat number:");
-                                    int Csno = Integer.parseInt(sc.nextLine());
-                                    b1.cancelSeat(tripId, Csno);
+                                    System.out.println("Enter your Ticket Number: ");
+                                    String ticket=sc.nextLine();
+                                    b1.cancelSeat(ticket);
                                     break;
                                 case 9:
                                     b1.displayBookings();
