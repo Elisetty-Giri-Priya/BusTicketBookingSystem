@@ -2,6 +2,7 @@
 import java.time.LocalDateTime;
 
 public class Trip {
+    public int tripId;
     public LocalDateTime departureTime;
     // public LocalDate departure_date=departureTime.toLocalDate();
     public LocalDateTime arrivalTime;

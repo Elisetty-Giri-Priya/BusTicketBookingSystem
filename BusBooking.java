@@ -51,6 +51,7 @@ public class BusBooking {
         buses.put(b4.BusNo, b4);
 
         Trip t1 = new Trip();
+        t1.tripId = 1;
         t1.departureTime = LocalDateTime.of(2025, 10, 19, 5, 00, 00);
         t1.arrivalTime = LocalDateTime.of(2025, 10, 19, 11, 30, 00);
         t1.source = "Kodur";
@@ -61,6 +62,7 @@ public class BusBooking {
         trips.add(t1);
 
         Trip t2 = new Trip();
+        t1.tripId = 2;
         t2.departureTime = LocalDateTime.of(2025, 10, 19, 18, 00, 00);
         t2.arrivalTime = LocalDateTime.of(2025, 10, 20, 2, 00, 00);
         t2.source = "Bangalore";
@@ -71,6 +73,7 @@ public class BusBooking {
         trips.add(t2);
 
         Trip t3 = new Trip();
+        t3.tripId = 3;
         t3.departureTime = LocalDateTime.of(2025, 10, 19, 8, 00, 00);
         t3.arrivalTime = LocalDateTime.of(2025, 10, 19, 11, 30, 00);
         t3.source = "Tirupati";
@@ -81,6 +84,7 @@ public class BusBooking {
         trips.add(t3);
 
         Trip t4 = new Trip();
+        t4.tripId = 4;
         t4.departureTime = LocalDateTime.of(2025, 10, 19, 1, 30, 00);
         t4.arrivalTime = LocalDateTime.of(2025, 10, 19, 17, 00, 00);
         t4.source = "madanapalli";
@@ -91,6 +95,7 @@ public class BusBooking {
         trips.add(t4);
 
         Trip t5 = new Trip();
+        t5.tripId = 5;
         t5.departureTime = LocalDateTime.of(2025, 10, 19, 7, 30, 00);
         t5.arrivalTime = LocalDateTime.of(2025, 10, 19, 9, 30, 00);
         t5.source = "Tirupati";
@@ -101,6 +106,7 @@ public class BusBooking {
         trips.add(t5);
 
         Trip t6 = new Trip();
+        t6.tripId = 6;
         t6.departureTime = LocalDateTime.of(2025, 10, 19, 10, 00, 00);
         t6.arrivalTime = LocalDateTime.of(2025, 10, 19, 12, 30, 00);
         t6.source = "kodur";
@@ -111,6 +117,7 @@ public class BusBooking {
         trips.add(t6);
 
         Trip t7 = new Trip();
+        t7.tripId = 7;
         t7.departureTime = LocalDateTime.of(2025, 10, 19, 13, 30, 00);
         t7.arrivalTime = LocalDateTime.of(2025, 10, 19, 15, 00, 00);
         t7.source = "Tirupati";
@@ -121,6 +128,7 @@ public class BusBooking {
         trips.add(t7);
 
         Trip t8 = new Trip();
+        t8.tripId = 8;
         t8.departureTime = LocalDateTime.of(2025, 10, 19, 16, 00, 00);
         t8.arrivalTime = LocalDateTime.of(2025, 10, 19, 18, 00, 00);
         t8.source = "Kodur";
@@ -131,6 +139,7 @@ public class BusBooking {
         trips.add(t8);
 
         Trip t9 = new Trip();
+        t9.tripId = 9;
         t9.departureTime = LocalDateTime.of(2025, 10, 19, 7, 30, 00);
         t9.arrivalTime = LocalDateTime.of(2025, 10, 19, 11, 00, 00);
         t9.source = "Madanapalli";
@@ -141,6 +150,7 @@ public class BusBooking {
         trips.add(t9);
 
         Trip t10 = new Trip();
+        t10.tripId = 10;
         t10.departureTime = LocalDateTime.of(2025, 10, 19, 12, 00, 00);
         t10.arrivalTime = LocalDateTime.of(2025, 10, 19, 16, 00, 00);
         t10.source = "Bangalore";
@@ -152,6 +162,7 @@ public class BusBooking {
 
         // second date
         Trip t11 = new Trip();
+        t11.tripId = 11;
         t11.departureTime = LocalDateTime.of(2025, 10, 20, 5, 00, 00);
         t11.arrivalTime = LocalDateTime.of(2025, 10, 21, 11, 30, 00);
         t11.source = "Kodur";
@@ -162,6 +173,7 @@ public class BusBooking {
         trips.add(t11);
 
         Trip t12 = new Trip();
+        t12.tripId = 12;
         t12.departureTime = LocalDateTime.of(2025, 10, 20, 18, 00, 00);
         t12.arrivalTime = LocalDateTime.of(2025, 10, 21, 2, 00, 00);
         t12.source = "Bangalore";
@@ -172,6 +184,7 @@ public class BusBooking {
         trips.add(t12);
 
         Trip t13 = new Trip();
+        t13.tripId = 13;
         t13.departureTime = LocalDateTime.of(2025, 10, 20, 8, 00, 00);
         t13.arrivalTime = LocalDateTime.of(2025, 10, 20, 11, 30, 00);
         t13.source = "Tirupati";
@@ -182,6 +195,7 @@ public class BusBooking {
         trips.add(t13);
 
         Trip t14 = new Trip();
+        t14.tripId = 14;
         t14.departureTime = LocalDateTime.of(2025, 10, 20, 1, 30, 00);
         t14.arrivalTime = LocalDateTime.of(2025, 10, 20, 17, 00, 00);
         t14.source = "madanapalli";
@@ -192,6 +206,7 @@ public class BusBooking {
         trips.add(t14);
 
         Trip t15 = new Trip();
+        t15.tripId = 15;
         t15.departureTime = LocalDateTime.of(2025, 10, 20, 7, 30, 00);
         t15.arrivalTime = LocalDateTime.of(2025, 10, 20, 9, 30, 00);
         t15.source = "Tirupati";
@@ -202,6 +217,7 @@ public class BusBooking {
         trips.add(t15);
 
         Trip t16 = new Trip();
+        t16.tripId = 16;
         t16.departureTime = LocalDateTime.of(2025, 10, 20, 10, 00, 00);
         t16.arrivalTime = LocalDateTime.of(2025, 10, 20, 12, 30, 00);
         t16.source = "kodur";
@@ -212,6 +228,7 @@ public class BusBooking {
         trips.add(t16);
 
         Trip t17 = new Trip();
+        t17.tripId = 17;
         t17.departureTime = LocalDateTime.of(2025, 10, 20, 13, 30, 00);
         t17.arrivalTime = LocalDateTime.of(2025, 10, 20, 15, 00, 00);
         t17.source = "Tirupati";
@@ -222,6 +239,7 @@ public class BusBooking {
         trips.add(t17);
 
         Trip t18 = new Trip();
+        t18.tripId = 18;
         t18.departureTime = LocalDateTime.of(2025, 10, 20, 16, 00, 00);
         t18.arrivalTime = LocalDateTime.of(2025, 10, 20, 18, 00, 00);
         t18.source = "Kodur";
@@ -232,6 +250,7 @@ public class BusBooking {
         trips.add(t18);
 
         Trip t19 = new Trip();
+        t19.tripId = 19;
         t19.departureTime = LocalDateTime.of(2025, 10, 20, 7, 30, 00);
         t19.arrivalTime = LocalDateTime.of(2025, 10, 20, 11, 00, 00);
         t19.source = "Madanapalli";
@@ -242,6 +261,7 @@ public class BusBooking {
         trips.add(t19);
 
         Trip t20 = new Trip();
+        t20.tripId = 20;
         t20.departureTime = LocalDateTime.of(2025, 10, 20, 12, 00, 00);
         t20.arrivalTime = LocalDateTime.of(2025, 10, 20, 16, 00, 00);
         t20.source = "Bangalore";
@@ -339,13 +359,15 @@ public class BusBooking {
     }
 
     public void searchTrips(LocalDate departureDate, String source, String destination_) {
-        System.out.printf("%20s %20s %15s %15s %15s\n", "Departure_time", "Arrival_time", "Source", "Destination",
+        System.out.printf("%7s %20s %20s %15s %15s %15s\n", "Trid_id", "Departure_time", "Arrival_time", "Source",
+                "Destination",
                 "Bus_no");
         for (int i = 0; i < trips.size(); i++) {
             Trip curr_trip = trips.get(i);
             if (curr_trip.departureTime.toLocalDate().equals(departureDate) && curr_trip.source.equals(source)
                     && curr_trip.destination.equals(destination_)) {
-                System.out.printf("%20s %20s %15s %15s %15d\n", curr_trip.departureTime, curr_trip.arrivalTime,
+                System.out.printf("%8d %20s %20s %15s %15s %15d\n", curr_trip.tripId, curr_trip.departureTime,
+                        curr_trip.arrivalTime,
                         curr_trip.source, curr_trip.destination, curr_trip.busno);
             }
         }
@@ -361,31 +383,28 @@ public class BusBooking {
         }
     }
 
-    public void searchSeats(LocalDateTime departuretime, String destination, int Bus_No) {
-        System.out.printf("%20s %20s %15s %15s %5s\n", "departureTime", "arrivalTime", "destination", "busno",
-                "AvailableSeats");
+    public void searchSeats(int trip_id) {
+        System.out.printf("%5s\n", "AvailableSeats");
         for (int i = 0; i < trips.size(); i++) {
             Trip curr_Trip = trips.get(i);
-            if (curr_Trip.departureTime.equals(departuretime) && curr_Trip.destination.equals(destination)
-                    && curr_Trip.busno == Bus_No) {
-                System.out.printf("%20s %20s %15s %15d %5d\n", curr_Trip.departureTime, curr_Trip.arrivalTime,
-                        curr_Trip.destination, curr_Trip.busno, curr_Trip.AvailableSeats);
+            if (curr_Trip.tripId == trip_id) {
+                System.out.printf("%5d\n", curr_Trip.AvailableSeats);
             }
         }
     }
 
-    public void bookSeat(LocalDateTime departureTime, String source, String Destination, int Bus_no, int seatNo) {
+    public void bookSeat(int TripId, int seatNo) {
         for (int i = 0; i < trips.size(); i++) {
             Trip curr_trip = trips.get(i);
-            if (curr_trip.busno == Bus_no && curr_trip.departureTime.equals(departureTime)
-                    && curr_trip.destination.equals(Destination)) {
+            if (curr_trip.tripId == TripId) {
                 BookingDetails bookingDetails = new BookingDetails();
                 bookingDetails.userName = curr_user;
-                bookingDetails.bus_no = Bus_no;
-                bookingDetails.source = source;
-                bookingDetails.destination = Destination;
+                bookingDetails.tid = TripId;
+                bookingDetails.bus_no = curr_trip.busno;
+                bookingDetails.source = curr_trip.source;
+                bookingDetails.destination = curr_trip.destination;
                 bookingDetails.seat_No = seatNo;
-                bookingDetails.BookedAt = departureTime;
+                bookingDetails.BookedAt = curr_trip.departureTime;
                 bookingDetails.status = BookingStatus.booked;
                 bookings.add(bookingDetails);
                 int[] s = curr_trip.busseats;
@@ -400,10 +419,10 @@ public class BusBooking {
         }
     }
 
-    public void displaySeats(LocalDateTime departuretime, int Bus_no) {
+    public void displaySeats(int tripiid) {
         for (int i = 0; i < trips.size(); i++) {
             Trip curr_trip = trips.get(i);
-            if (curr_trip.departureTime.equals(departuretime) && curr_trip.busno == Bus_no) {
+            if (curr_trip.tripId == tripiid) {
                 int[] s = curr_trip.busseats;
                 int count = 0;
                 for (int k = 1; k < s.length; k++) {
@@ -425,17 +444,16 @@ public class BusBooking {
         }
     }
 
-    public void cancelSeat(LocalDateTime departureTime, int Bus_no, int seatNo) {
+    public void cancelSeat(int tripId, int seatNo) {
         boolean isFound = false;
         for (int i = 0; i < bookings.size(); i++) {
             BookingDetails curr_booking = bookings.get(i);
-            if (curr_booking.bus_no == Bus_no && curr_booking.BookedAt.equals(departureTime)
-                    && curr_booking.seat_No == seatNo) {
+            if (curr_booking.tid == tripId) {
                 isFound = true;
                 curr_booking.status = BookingStatus.cancelled;
                 for (int j = 0; j < trips.size(); j++) {
                     Trip curr_trip = trips.get(j);
-                    if (curr_trip.departureTime.equals(departureTime) && curr_trip.busno == Bus_no) {
+                    if (curr_trip.tripId == tripId) {
                         int[] s = curr_trip.busseats;
                         s[seatNo] = 0;
                         curr_trip.AvailableSeats++;

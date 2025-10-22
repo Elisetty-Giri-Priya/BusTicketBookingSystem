@@ -2,6 +2,7 @@ import java.time.LocalDateTime;
 
 public class BookingDetails {
     public String userName;
+    public int tid;
     public int bus_no;
     public String source;
     public String destination;
