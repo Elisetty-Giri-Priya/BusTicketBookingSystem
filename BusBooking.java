@@ -486,14 +486,10 @@ public class BusBooking {
         }
     }
 
-    public void displayBookings(int Trip_id) {
+    public void displayBookings(String name) {
         boolean isfound = false;
-        for (String j : bookings.keySet()) {
-            BookingDetails cur_booking = bookings.get(j);
-            if (cur_booking.tid == Trip_id) {
-                isfound = true;
-                break;
-            }
+        if (curr_user.equals(name)) {
+            isfound = true;
         }
         if (isfound) {
             System.out.printf("%15s %15s %20s %30s %15s\n", "User_Name", "Bus_No", "Ticket_Number", "BookedAt",
@@ -501,13 +497,13 @@ public class BusBooking {
             ArrayList<BookingDetails> Bookings = new ArrayList<>(bookings.values());
             for (int i = 0; i < Bookings.size(); i++) {
                 BookingDetails curr_Booking = Bookings.get(i);
-                if (curr_Booking.tid == Trip_id) {
+                if (curr_Booking.userName.equals(name)) {
                     System.out.printf("%15s %15d %20s %30s %15s\n", curr_Booking.userName, curr_Booking.bus_no,
                             curr_Booking.ticket, curr_Booking.BookedAt, curr_Booking.status);
                 }
             }
         } else {
-            System.out.println("There is no bookings for this Trip Id!");
+            System.out.println("There user name is missmatched to the given user name!");
         }
     }
 
