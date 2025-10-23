@@ -406,13 +406,19 @@ public class BusBooking {
     }
 
     public void searchSeats(int trip_id) {
-        System.out.printf("%5s\n", "AvailableSeats");
-        ArrayList<Trip> Trips = new ArrayList<>(trips.values());
-        for (int i = 0; i < trips.size(); i++) {
-            Trip curr_Trip = Trips.get(i);
-            if (curr_Trip.tripId == trip_id) {
-                System.out.printf("%5d\n", curr_Trip.AvailableSeats);
+        boolean isFound = false;
+        for (int key : trips.keySet()) {
+            Trip curr_trip = trips.get(key);
+            if (curr_trip.tripId == trip_id) {
+                isFound = true;
+                break;
             }
+        }
+        if (isFound) {
+            Trip curr_trip = trips.get(trip_id);
+            System.out.println("Available Seats: " + curr_trip.AvailableSeats);
+        } else {
+            System.out.println("There is no trip for for this trip Id. Please, enter valid trip Id!");
         }
     }
 
@@ -462,33 +468,46 @@ public class BusBooking {
 
     public void cancelSeat(String ticket_nummber) {
         boolean isFound = false;
-        ArrayList<BookingDetails> Bookings = new ArrayList<>(bookings.values());
-        for (int i = 0; i < Bookings.size(); i++) {
-            BookingDetails cur_booking = Bookings.get(i);
-            if (cur_booking.ticket.equals(ticket_nummber)) {
+        for (String key : bookings.keySet()) {
+            if (bookings.get(key).ticket.equals(ticket_nummber)) {
                 isFound = true;
-                break;
             }
         }
         if (!isFound) {
             System.out.println("The seat is not cancelled.Because the seat is not booked");
+        } else {
+            BookingDetails curr_booking = bookings.get(ticket_nummber);
+            curr_booking.status = BookingStatus.cancelled;
+            Trip curr_trip = trips.get(curr_booking.tid);
+            int[] s = curr_trip.busseats;
+            s[curr_booking.seatNo] = 0;
+            curr_trip.AvailableSeats++;
+            System.out.println("Your seat is cancelled successfully");
         }
-        BookingDetails curr_booking = bookings.get(ticket_nummber);
-        curr_booking.status = BookingStatus.cancelled;
-        Trip curr_trip = trips.get(curr_booking.tid);
-        int[] s = curr_trip.busseats;
-        s[curr_booking.seatNo] = 0;
-        curr_trip.AvailableSeats++;
-        System.out.println("Your seat is cancelled successfully");
     }
 
-    public void displayBookings() {
-        System.out.printf("%15s %15s %20s %30s %15s\n", "User_Name", "Bus_No", "Ticket_Number", "BookedAt", "status");
-        ArrayList<BookingDetails> Bookings = new ArrayList<>(bookings.values());
-        for (int i = 0; i < Bookings.size(); i++) {
-            BookingDetails curr_Booking = Bookings.get(i);
-            System.out.printf("%15s %15d %20s %30s %15s\n", curr_Booking.userName, curr_Booking.bus_no,
-                    curr_Booking.ticket, curr_Booking.BookedAt, curr_Booking.status);
+    public void displayBookings(int Trip_id) {
+        boolean isfound = false;
+        for (String j : bookings.keySet()) {
+            BookingDetails cur_booking = bookings.get(j);
+            if (cur_booking.tid == Trip_id) {
+                isfound = true;
+                break;
+            }
+        }
+        if (isfound) {
+            System.out.printf("%15s %15s %20s %30s %15s\n", "User_Name", "Bus_No", "Ticket_Number", "BookedAt",
+                    "status");
+            ArrayList<BookingDetails> Bookings = new ArrayList<>(bookings.values());
+            for (int i = 0; i < Bookings.size(); i++) {
+                BookingDetails curr_Booking = Bookings.get(i);
+                if (curr_Booking.tid == Trip_id) {
+                    System.out.printf("%15s %15d %20s %30s %15s\n", curr_Booking.userName, curr_Booking.bus_no,
+                            curr_Booking.ticket, curr_Booking.BookedAt, curr_Booking.status);
+                }
+            }
+        } else {
+            System.out.println("There is no bookings for this Trip Id!");
         }
     }
 

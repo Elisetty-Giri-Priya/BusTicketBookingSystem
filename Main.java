@@ -90,7 +90,9 @@ public class Main {
                                     b1.cancelSeat(ticket);
                                     break;
                                 case 9:
-                                    b1.displayBookings();
+                                    System.out.println("Enter the Trip Id:");
+                                    int trip_id = Integer.parseInt(sc.nextLine());
+                                    b1.displayBookings(trip_id);
                                     break;
                             }
                             if (Option == 10) {
