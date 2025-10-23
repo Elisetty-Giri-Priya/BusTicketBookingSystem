@@ -8,9 +8,9 @@ public class BusBooking {
 
     HashMap<Integer, Bus> buses = new HashMap<Integer, Bus>();
     // HashMap<Integer, User> users = new HashMap<Integer, User>();
-    ArrayList<BookingDetails> bookings = new ArrayList<BookingDetails>();
+    HashMap<String, BookingDetails> bookings = new HashMap<>();
     ArrayList<UserRegister> registerations = new ArrayList<UserRegister>();
-    ArrayList<Trip> trips = new ArrayList<>();
+    HashMap<Integer, Trip> trips = new HashMap<>();
     String curr_user = "";
 
     public void intitialize() {
@@ -60,7 +60,7 @@ public class BusBooking {
         t1.busseats = new int[Trip.travel_seats];
         t1.AvailableSeats = Trip.travel_seats;
         // t1.tripTicket = "AP/12345/1/KDR/BNGL/";
-        trips.add(t1);
+        trips.put(t1.tripId, t1);
 
         Trip t2 = new Trip();
         t1.tripId = 2;
@@ -72,7 +72,7 @@ public class BusBooking {
         t2.busseats = new int[Trip.travel_seats];
         t2.AvailableSeats = Trip.travel_seats;
         // t2.tripTicket = "AP/12345/2/BNGL/KDR/";
-        trips.add(t2);
+        trips.put(t1.tripId, t2);
 
         Trip t3 = new Trip();
         t3.tripId = 3;
@@ -84,7 +84,7 @@ public class BusBooking {
         t3.busseats = new int[Trip.express_seats];
         t3.AvailableSeats = Trip.express_seats;
         // t3.tripTicket = "AP/12343/3/TPT/MDPL/";
-        trips.add(t3);
+        trips.put(t3.tripId, t3);
 
         Trip t4 = new Trip();
         t4.tripId = 4;
@@ -96,7 +96,7 @@ public class BusBooking {
         t4.busseats = new int[Trip.travel_seats];
         t4.AvailableSeats = Trip.travel_seats;
         // t4.tripTicket = "AP/12343/4/MDPL/TPT/";
-        trips.add(t4);
+        trips.put(t4.tripId, t4);
 
         Trip t5 = new Trip();
         t5.tripId = 5;
@@ -108,7 +108,7 @@ public class BusBooking {
         t5.busseats = new int[Trip.travel_seats];
         t5.AvailableSeats = Trip.travel_seats;
         // t5.tripTicket = "AP/12348/5/TPT/KDR/";
-        trips.add(t5);
+        trips.put(t5.tripId, t5);
 
         Trip t6 = new Trip();
         t6.tripId = 6;
@@ -120,7 +120,7 @@ public class BusBooking {
         t6.busseats = new int[Trip.travel_seats];
         t6.AvailableSeats = Trip.travel_seats;
         // t6.tripTicket = "AP/12348/6/kDR/TPT/";
-        trips.add(t6);
+        trips.put(t6.tripId, t6);
 
         Trip t7 = new Trip();
         t7.tripId = 7;
@@ -132,7 +132,7 @@ public class BusBooking {
         t7.busseats = new int[Trip.travel_seats];
         t7.AvailableSeats = Trip.travel_seats;
         // t7.tripTicket = "AP/12348/7/TPT/KDR/";
-        trips.add(t7);
+        trips.put(t7.tripId, t7);
 
         Trip t8 = new Trip();
         t8.tripId = 8;
@@ -144,7 +144,7 @@ public class BusBooking {
         t8.busseats = new int[Trip.travel_seats];
         t8.AvailableSeats = Trip.travel_seats;
         // t8.tripTicket = "AP/12348/8/kDR/TPT/";
-        trips.add(t8);
+        trips.put(t8.tripId, t8);
 
         Trip t9 = new Trip();
         t9.tripId = 9;
@@ -156,7 +156,7 @@ public class BusBooking {
         t9.busseats = new int[Trip.express_seats];
         t9.AvailableSeats = Trip.express_seats;
         // t9.tripTicket = "AP/12346/9/MDPL/BNGL/";
-        trips.add(t9);
+        trips.put(t9.tripId, t9);
 
         Trip t10 = new Trip();
         t10.tripId = 10;
@@ -168,7 +168,7 @@ public class BusBooking {
         t10.busseats = new int[Trip.express_seats];
         t10.AvailableSeats = Trip.express_seats;
         // t10.tripTicket = "AP/12346/10/BNGL/MDPL/";
-        trips.add(t10);
+        trips.put(t10.tripId, t10);
 
         // second date
         Trip t11 = new Trip();
@@ -181,7 +181,7 @@ public class BusBooking {
         t11.busseats = new int[Trip.travel_seats];
         t11.AvailableSeats = Trip.travel_seats;
         // t11.tripTicket = "AP/12345/11/KDR/BNGL/";
-        trips.add(t11);
+        trips.put(t11.tripId, t11);
 
         Trip t12 = new Trip();
         t12.tripId = 12;
@@ -193,7 +193,7 @@ public class BusBooking {
         t12.busseats = new int[Trip.travel_seats];
         t12.AvailableSeats = Trip.travel_seats;
         // t12.tripTicket = "AP/12345/12/BNGL/kDR/";
-        trips.add(t12);
+        trips.put(t12.tripId, t12);
 
         Trip t13 = new Trip();
         t13.tripId = 13;
@@ -205,7 +205,7 @@ public class BusBooking {
         t13.busseats = new int[Trip.express_seats];
         t13.AvailableSeats = Trip.express_seats;
         // t13.tripTicket = "AP/12343/13/TPT/MDPL";
-        trips.add(t13);
+        trips.put(t13.tripId, t13);
 
         Trip t14 = new Trip();
         t14.tripId = 14;
@@ -217,7 +217,7 @@ public class BusBooking {
         t14.busseats = new int[Trip.travel_seats];
         t14.AvailableSeats = Trip.travel_seats;
         // t14.tripTicket = "AP/12348/14/MDPL/TPT/";
-        trips.add(t14);
+        trips.put(t14.tripId, t14);
 
         Trip t15 = new Trip();
         t15.tripId = 15;
@@ -229,7 +229,7 @@ public class BusBooking {
         t15.busseats = new int[Trip.travel_seats];
         t15.AvailableSeats = Trip.travel_seats;
         // t15.tripTicket = "AP/12348/15/TPT/KDR/";
-        trips.add(t15);
+        trips.put(t15.tripId, t15);
 
         Trip t16 = new Trip();
         t16.tripId = 16;
@@ -241,7 +241,7 @@ public class BusBooking {
         t16.busseats = new int[Trip.travel_seats];
         t16.AvailableSeats = Trip.travel_seats;
         // t16.tripTicket = "AP/12348/16/KDR/TPT/";
-        trips.add(t16);
+        trips.put(t16.tripId, t16);
 
         Trip t17 = new Trip();
         t17.tripId = 17;
@@ -253,7 +253,7 @@ public class BusBooking {
         t17.busseats = new int[Trip.travel_seats];
         t17.AvailableSeats = Trip.travel_seats;
         // t17.tripTicket = "AP/12348/14/TPT/KDR/";
-        trips.add(t17);
+        trips.put(t17.tripId, t17);
 
         Trip t18 = new Trip();
         t18.tripId = 18;
@@ -265,7 +265,7 @@ public class BusBooking {
         t18.busseats = new int[Trip.travel_seats];
         t18.AvailableSeats = Trip.travel_seats;
         // t18.tripTicket = "AP/12348/18/KDR/TPT/";
-        trips.add(t18);
+        trips.put(t18.tripId, t18);
 
         Trip t19 = new Trip();
         t19.tripId = 19;
@@ -277,7 +277,7 @@ public class BusBooking {
         t19.busseats = new int[Trip.express_seats];
         t19.AvailableSeats = Trip.express_seats;
         // t19.tripTicket = "AP/12346/19/MDPL/BNGL/";
-        trips.add(t19);
+        trips.put(t19.tripId, t19);
 
         Trip t20 = new Trip();
         t20.tripId = 20;
@@ -289,7 +289,7 @@ public class BusBooking {
         t20.busseats = new int[Trip.express_seats];
         t20.AvailableSeats = Trip.express_seats;
         // t20.tripTicket = "AP/12346/20/BNGL/MDPL/";
-        trips.add(t20);
+        trips.put(t20.tripId, t20);
 
         // User u1 = new User();
         // u1.UserName = "priya";
@@ -382,8 +382,9 @@ public class BusBooking {
         System.out.printf("%7s %20s %20s %15s %15s %15s\n", "Trid_id", "Departure_time", "Arrival_time", "Source",
                 "Destination",
                 "Bus_no");
-        for (int i = 0; i < trips.size(); i++) {
-            Trip curr_trip = trips.get(i);
+        ArrayList<Trip> Trips = new ArrayList<>(trips.values());
+        for (int i = 0; i < Trips.size(); i++) {
+            Trip curr_trip = Trips.get(i);
             if (curr_trip.departureTime.toLocalDate().equals(departureDate) && curr_trip.source.equals(source)
                     && curr_trip.destination.equals(destination_)) {
                 System.out.printf("%8d %20s %20s %15s %15s %15d\n", curr_trip.tripId, curr_trip.departureTime,
@@ -396,8 +397,9 @@ public class BusBooking {
     public void listTrips() {
         System.out.printf("%20s %20s %15s %15s %15s\n", "Departure_time", "Arrival_time", "Source", "Destination",
                 "Bus_no");
-        for (int i = 0; i < trips.size(); i++) {
-            Trip curr_trip = trips.get(i);
+        ArrayList<Trip> Trips = new ArrayList<>(trips.values());
+        for (int i = 0; i < Trips.size(); i++) {
+            Trip curr_trip = Trips.get(i);
             System.out.printf("%20s %20s %15s %15s %15d\n", curr_trip.departureTime, curr_trip.arrivalTime,
                     curr_trip.source, curr_trip.destination, curr_trip.busno);
         }
@@ -405,98 +407,86 @@ public class BusBooking {
 
     public void searchSeats(int trip_id) {
         System.out.printf("%5s\n", "AvailableSeats");
+        ArrayList<Trip> Trips = new ArrayList<>(trips.values());
         for (int i = 0; i < trips.size(); i++) {
-            Trip curr_Trip = trips.get(i);
+            Trip curr_Trip = Trips.get(i);
             if (curr_Trip.tripId == trip_id) {
                 System.out.printf("%5d\n", curr_Trip.AvailableSeats);
             }
         }
     }
 
-    public void bookSeat(int TripId, int seatNo) {
-        for (int i = 0; i < trips.size(); i++) {
-            Trip curr_trip = trips.get(i);
-            if (curr_trip.tripId == TripId) {
-                BookingDetails bookingDetails = new BookingDetails();
-                bookingDetails.userName = curr_user;
-                bookingDetails.tid = TripId;
-                bookingDetails.bus_no = curr_trip.busno;
-                bookingDetails.source = curr_trip.source;
-                bookingDetails.destination = curr_trip.destination;
-                // bookingDetails.seat_No = seatNo;
-                bookingDetails.BookedAt = curr_trip.departureTime;
-                bookingDetails.status = BookingStatus.booked;
-                bookings.add(bookingDetails);
-                int[] s = curr_trip.busseats;
-                if (s[seatNo] == 0) {
-                    s[seatNo] = 1;
-                    bookingDetails.ticket = "AP/" + curr_trip.busno + "/" + curr_trip.tripId + "/" + seatNo;
-                    System.out.println("Your Ticket: " + bookingDetails.ticket);
-                    System.out.println("Your seat is successfully booked");
-                    curr_trip.AvailableSeats--;
-                } else {
-                    System.out.println("This seat is already booked. Please, select the another seat!");
-                }
-                break;
-            }
+    public void bookSeat(int TripId, int seatno) {
+        Trip curr_trip = trips.get(TripId);
+        BookingDetails bookingDetails = new BookingDetails();
+        bookingDetails.userName = curr_user;
+        bookingDetails.tid = TripId;
+        bookingDetails.bus_no = curr_trip.busno;
+        bookingDetails.source = curr_trip.source;
+        bookingDetails.destination = curr_trip.destination;
+        bookingDetails.seatNo = seatno;
+        bookingDetails.BookedAt = curr_trip.departureTime;
+        bookingDetails.status = BookingStatus.booked;
+        int[] s = curr_trip.busseats;
+        if (s[seatno] == 0) {
+            s[seatno] = 1;
+            bookingDetails.ticket = "AP/" + curr_trip.busno + "/" + curr_trip.tripId + "/" + seatno;
+            System.out.println("Your Ticket: " + bookingDetails.ticket);
+            System.out.println("Your seat is successfully booked");
+            curr_trip.AvailableSeats--;
+            bookings.put(bookingDetails.ticket, bookingDetails);
+        } else {
+            System.out.println("This seat is already booked. Please, select the another seat!");
         }
     }
 
     public void displaySeats(int tripiid) {
-        for (int i = 0; i < trips.size(); i++) {
-            Trip curr_trip = trips.get(i);
-            if (curr_trip.tripId == tripiid) {
-                int[] s = curr_trip.busseats;
-                int count = 0;
-                for (int k = 1; k < s.length; k++) {
-                    count = 0;
-                    int l = 0;
-                    for (l = k; count < 5; l++) {
-                        System.out.printf("%2d ", s[l], " ");
-                        if (count == 1) {
-                            System.out.print("  ");
-                        }
-                        count++;
-                    }
-                    l--;
-                    k = l;
-                    System.out.println();
+        Trip curr_trip = trips.get(tripiid);
+        int[] s = curr_trip.busseats;
+        int count = 0;
+        for (int k = 1; k < s.length; k++) {
+            count = 0;
+            int l = 0;
+            for (l = k; count < 5; l++) {
+                System.out.printf("%2d ", s[l], " ");
+                if (count == 1) {
+                    System.out.print("  ");
                 }
-                break;
+                count++;
             }
+            l--;
+            k = l;
+            System.out.println();
         }
     }
 
     public void cancelSeat(String ticket_nummber) {
         boolean isFound = false;
-        for (int i = 0; i < bookings.size(); i++) {
-            BookingDetails curr_booking = bookings.get(i);
-            if (curr_booking.ticket.equals(ticket_nummber)) {
+        ArrayList<BookingDetails> Bookings = new ArrayList<>(bookings.values());
+        for (int i = 0; i < Bookings.size(); i++) {
+            BookingDetails cur_booking = Bookings.get(i);
+            if (cur_booking.ticket.equals(ticket_nummber)) {
                 isFound = true;
-                curr_booking.status = BookingStatus.cancelled;
-                for (int j = 0; j < trips.size(); j++) {
-                    Trip curr_trip = trips.get(j);
-                    if (curr_trip.tripId == Integer.parseInt(ticket_nummber.substring(9, 11))) {
-                        int[] s = curr_trip.busseats;
-                        int seatNo = Integer.parseInt(ticket_nummber.substring(12));
-                        s[seatNo] = 0;
-                        curr_trip.AvailableSeats++;
-                        System.out.println("Your seat is cancelled successfully");
-                        break;
-                    }
-                }
                 break;
             }
         }
         if (!isFound) {
             System.out.println("The seat is not cancelled.Because the seat is not booked");
         }
+        BookingDetails curr_booking = bookings.get(ticket_nummber);
+        curr_booking.status = BookingStatus.cancelled;
+        Trip curr_trip = trips.get(curr_booking.tid);
+        int[] s = curr_trip.busseats;
+        s[curr_booking.seatNo] = 0;
+        curr_trip.AvailableSeats++;
+        System.out.println("Your seat is cancelled successfully");
     }
 
     public void displayBookings() {
         System.out.printf("%15s %15s %20s %30s %15s\n", "User_Name", "Bus_No", "Ticket_Number", "BookedAt", "status");
-        for (int i = 0; i < bookings.size(); i++) {
-            BookingDetails curr_Booking = bookings.get(i);
+        ArrayList<BookingDetails> Bookings = new ArrayList<>(bookings.values());
+        for (int i = 0; i < Bookings.size(); i++) {
+            BookingDetails curr_Booking = Bookings.get(i);
             System.out.printf("%15s %15d %20s %30s %15s\n", curr_Booking.userName, curr_Booking.bus_no,
                     curr_Booking.ticket, curr_Booking.BookedAt, curr_Booking.status);
         }

@@ -73,7 +73,7 @@ public class Main {
                                     break;
                                 case 6:
                                     System.out.println("Enter the TripId:");
-                                   int trid = Integer.parseInt(sc.nextLine());
+                                    int trid = Integer.parseInt(sc.nextLine());
                                     b1.displaySeats(trid);
                                     break;
                                 case 7:
@@ -86,22 +86,17 @@ public class Main {
                                     break;
                                 case 8:
                                     System.out.println("Enter your Ticket Number: ");
-                                    String ticket=sc.nextLine();
+                                    String ticket = sc.nextLine();
                                     b1.cancelSeat(ticket);
                                     break;
                                 case 9:
                                     b1.displayBookings();
                                     break;
-                                // case 10:
-                                // break;
-
                             }
                             if (Option == 10) {
                                 break;
                             }
                         }
-                        // } else if (Option == 10) {
-                        // break;
                     } else {
                         System.out.println(
                                 "Your User Name and password are not matched. Please enter your correct user name and password!");
